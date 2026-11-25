@@ -106,6 +106,22 @@
       @keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
       @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
     </style>
+    <style>
+      .sleigh-flight { position: fixed; z-index: 2; top: 5%; left: -300px; width: 250px; height: 100px; pointer-events: none; animation: fly-across 24s linear infinite; }
+      .sleigh { position: absolute; left: 15px; top: 53px; width: 85px; height: 30px; background: #b92e38; border-radius: 8px 8px 35px 30px; border-bottom: 4px solid #79202c; }
+      .sleigh::after { content: ''; position: absolute; left: -7px; top: 31px; width: 100px; height: 9px; border-bottom: 4px solid #edc77d; border-radius: 50%; }
+      .santa { position: absolute; left: 38px; top: 29px; width: 35px; height: 30px; background: #c9383d; border-radius: 45% 45% 15% 15%; }
+      .santa::before { content: ''; position: absolute; left: 7px; top: -20px; width: 22px; height: 23px; background: #f3d2b5; border-radius: 50%; border-bottom: 7px solid white; }
+      .santa::after { content: ''; position: absolute; left: 6px; top: -27px; width: 24px; height: 12px; background: #d53a40; border-radius: 80% 80% 0 0; border-bottom: 3px solid white; }
+      .reindeer { position: absolute; left: 163px; top: 46px; width: 55px; height: 25px; background: #9a613c; border-radius: 50%; }
+      .reindeer::before { content: ''; position: absolute; right: -12px; top: -13px; width: 23px; height: 20px; background: #a76c44; border-radius: 45%; box-shadow: 9px 3px 0 -6px #e75650; }
+      .reindeer::after { content: ''; position: absolute; right: -1px; top: -25px; width: 15px; height: 16px; border-left: 3px solid #60402d; border-right: 3px solid #60402d; transform: rotate(-12deg); }
+      .legs { position: absolute; top: 18px; left: 10px; width: 34px; height: 20px; border-left: 4px solid #795037; border-right: 4px solid #795037; transform: skew(-25deg); }
+      .reins { position: absolute; left: 92px; top: 60px; width: 75px; border-top: 2px solid #e0c5a3; transform: rotate(-5deg); }
+      @keyframes fly-across { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 300px)); } }
+      @media (prefers-reduced-motion: reduce) { .sleigh-flight { animation: none; left: auto; right: 5%; transform: scale(.7); transform-origin: top right; } }
+    </style>
+    <div class="sleigh-flight" aria-hidden="true"><div class="santa"></div><div class="sleigh"></div><div class="reins"></div><div class="reindeer"><div class="legs"></div></div></div>
     <script>
       const container = document.querySelector('.container');
       const heading = container.querySelector('h1');
