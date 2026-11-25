@@ -167,6 +167,18 @@
         overflow: hidden;
         pointer-events: none;
       }
+      .click-spark {
+        position: fixed;
+        z-index: 20;
+        pointer-events: none;
+        color: #ffe6a2;
+        text-shadow: 0 0 8px #ffc65c;
+        animation: spark-fall 850ms ease-out forwards;
+      }
+      @keyframes spark-fall {
+        from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        to { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(.3) rotate(100deg); }
+      }
       .flake {
         position: absolute;
         top: -2rem;
@@ -462,6 +474,22 @@
       });
       button.addEventListener("click", renderLanguage);
       renderLanguage();
+      document.addEventListener("click", (event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        for (let i = 0; i < 6; i++) {
+          const spark = document.createElement("span");
+          spark.className = "click-spark";
+          spark.setAttribute("aria-hidden", "true");
+          spark.textContent = "✦";
+          spark.style.left = event.clientX + "px";
+          spark.style.top = event.clientY + "px";
+          spark.style.fontSize = (8 + Math.random() * 10) + "px";
+          spark.style.setProperty("--x", (Math.random() * 100 - 50) + "px");
+          spark.style.setProperty("--y", (30 + Math.random() * 75) + "px");
+          spark.addEventListener("animationend", () => spark.remove(), { once: true });
+          document.body.appendChild(spark);
+        }
+      });
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const snow = document.createElement("div");
         snow.className = "snow";
