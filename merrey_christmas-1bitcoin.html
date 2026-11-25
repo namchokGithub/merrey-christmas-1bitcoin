@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&amp;family=Pacifico&amp;family=Mali:wght@400;600&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600&amp;display=swap" />
     <link
       rel="icon"
       href="data:image/svg+xml,
@@ -104,7 +108,7 @@
           #081a27
         );
         color: #fff4dd;
-        font-family: Georgia, serif;
+        font-family: "Playfair Display", Georgia, serif;
       }
       .container {
         position: relative;
@@ -206,7 +210,12 @@
         color: #ffedc7;
       }
       .language-toggle:hover { background: #285443; }
-      html[lang="th"] .container { font-family: Tahoma, Arial, sans-serif; }
+      html[lang="th"] .container { font-family: "Google Sans", Tahoma, Arial, sans-serif; }
+      html[lang="en"] .eyebrow, html[lang="en"] .footer, html[lang="en"] .container button { font-family: "Playfair Display", Arial, sans-serif; }
+      html[lang="th"] .eyebrow, html[lang="th"] .footer { font-family: "Google Sans", Tahoma, Arial, sans-serif; }
+      html[lang="en"] .signature { font-family: Pacifico, Georgia, serif; font-style: normal; }
+      html[lang="th"] .signature { font-family: Mali, Tahoma, Arial, sans-serif; font-style: normal; }
+      html[lang="th"] .container button { font-family: "Google Sans", Arial, sans-serif; }
       html[lang="th"] h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.25; }
       html[lang="th"] .eyebrow, html[lang="th"] .footer { letter-spacing: normal; line-height: 1.6; }
       .container { padding-bottom: 90px; }
