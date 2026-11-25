@@ -424,6 +424,16 @@
       .prank-modal::backdrop {
         background: #080808c9;
       }
+      .prank-modal[open] { animation: alert-shake .45s ease-out; }
+      .container.alert-shake { animation: alert-shake .45s ease-out; }
+      @keyframes alert-shake {
+        0%, 100% { transform: translateX(0); }
+        20% { transform: translateX(-9px); }
+        40% { transform: translateX(8px); }
+        60% { transform: translateX(-5px); }
+        80% { transform: translateX(3px); }
+      }
+      @media (prefers-reduced-motion: reduce) { .prank-modal[open], .container.alert-shake { animation: none; } }
       .prank-header {
         display: flex;
         align-items: center;
@@ -801,6 +811,10 @@
             choosePrank();
             renderPrank();
             prank.showModal();
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              container.classList.add("alert-shake");
+              container.addEventListener("animationend", () => container.classList.remove("alert-shake"), { once: true });
+            }
           }, 2000);
         }
         button.setAttribute("aria-expanded", String(opening));
