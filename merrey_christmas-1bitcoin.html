@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -495,6 +495,10 @@
       .prank-modal .prank-action:hover {
         background: #941d27;
       }
+      .prank-actions { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 20px; }
+      .prank-modal .prank-action { margin: 0; }
+      .prank-modal .prank-more { padding: 12px 18px; border: 1px solid #bd2631; border-radius: 6px; background: transparent; color: #a51f2a; font: 700 14px Arial, Tahoma, sans-serif; letter-spacing: 0; }
+      .prank-modal .prank-more:hover { background: #fce8e9; }
       .signature {
         color: #e9c987;
         font-style: italic;
@@ -667,7 +671,7 @@
         <p id="prank-description"></p>
         <strong class="prank-amount"></strong>
         <p class="prank-reveal" hidden></p>
-        <button type="button" class="prank-action"></button>
+        <div class="prank-actions"><button type="button" class="prank-more" hidden></button><button type="button" class="prank-action"></button></div>
       </div>
     </dialog>
     <div class="sleigh-flight" aria-hidden="true">
@@ -776,23 +780,28 @@
       const button = container.querySelector("button");
       const prank = document.querySelector(".prank-modal");
       const prankAction = prank.querySelector(".prank-action");
+      const prankMore = prank.querySelector(".prank-more");
       let prankTimer;
-      let prankShown = false;
       let prankRevealed = false;
+      let prankChoice;
+      function choosePrank(avoidKind) {
+        let kind = Math.floor(Math.random() * (avoidKind === undefined ? 7 : 6));
+        if (avoidKind !== undefined && kind >= avoidKind) kind++;
+        prankChoice = { kind, btc: (500 + Math.floor(Math.random() * 501)) / 1000, baht: 25 + Math.floor(Math.random() * 2476), fridgeItem: Math.floor(Math.random() * 4) };
+      }
       button.addEventListener("click", () => {
         const message = document.getElementById("message");
         const opening = message.hidden;
         message.hidden = !opening;
         clearTimeout(prankTimer);
-        if (opening && !prankShown) {
+        if (opening) {
           prankTimer = setTimeout(() => {
             if (message.hidden || prank.open) return;
-            prankShown = true;
-            prank.querySelector(".prank-amount").textContent =
-              (0.5 + Math.random() * 0.5).toFixed(3) + " BTC";
+            prankRevealed = false;
+            choosePrank();
             renderPrank();
             prank.showModal();
-          }, 2500);
+          }, 2000);
         }
         button.setAttribute("aria-expanded", String(opening));
         button.textContent = opening
@@ -823,19 +832,50 @@
           switchLabel: "Switch to English",
         },
       };
-      let language = "en";
+      let language = "th";
       function renderPrank() {
         const thai = language === "th";
         prank.querySelector("#prank-title").textContent = thai
           ? "แจ้งเตือน!"
           : "Scam alert!";
-        prank.querySelector("#prank-description").textContent = thai
-          ? "Bitcoin ของคุณหายไปแล้ว!"
-          : "Your Bitcoin has disappeared!";
+        if (prankChoice) {
+          const items = thai
+            ? ["หมา", "แมว", "ขนม", "น้ำอัดลม"]
+            : ["dog", "cat", "snacks", "soda"];
+          const descriptions = thai
+            ? [
+                "Bitcoin ของคุณหายไปแล้ว!",
+                "เงินในบัญชีของคุณหายไปแล้ว!",
+                `${items[prankChoice.fridgeItem]}ในตู้เย็นของคุณหายไปแล้ว!`,
+                "ไม่มีใครยืนอยู่ข้างหลังคุณ",
+                "อ่านทำไม",
+                "ว่าแล้วคุณต้องอ่าน",
+                "อย่าให้มีครั้งที่ 4",
+              ]
+            : [
+                "Your Bitcoin has disappeared!",
+                "Money has disappeared from your account!",
+                `The ${items[prankChoice.fridgeItem]} in your fridge has disappeared!`,
+                "Nobody is standing behind you.",
+                "Why are you reading this?",
+                "I knew you'd read this.",
+                "Don't let there be a fourth time.",
+              ];
+          prank.querySelector("#prank-description").textContent =
+            descriptions[prankChoice.kind];
+          prank.querySelector(".prank-amount").textContent =
+            prankChoice.kind === 0
+              ? prankChoice.btc.toFixed(3) + " BTC"
+              : prankChoice.kind === 1
+                ? prankChoice.baht.toLocaleString() + (thai ? " บาท" : " THB")
+                : "";
+        }
         prank.querySelector(".prank-reveal").textContent = thai
-          ? "ล้อเล่นนะ! ไม่มี Bitcoin หายไปจริง ๆ สุขสันต์วันคริสต์มาส"
-          : "Just kidding! No Bitcoin was lost. Merry Christmas!";
+          ? "ล้อเล่นนะ! สุขสันต์วันคริสต์มาส"
+          : "Just kidding! Merry Christmas!";
         prank.querySelector(".prank-reveal").hidden = !prankRevealed;
+        prankMore.hidden = !prankRevealed;
+        prankMore.textContent = thai ? "มีอะไรอีก" : "What else?";
         prankAction.textContent = prankRevealed
           ? thai
             ? "ปิด"
@@ -850,6 +890,12 @@
           prankRevealed = true;
           renderPrank();
         }
+      });
+      prankMore.addEventListener("click", () => {
+        choosePrank(prankChoice.kind);
+        prankRevealed = false;
+        renderPrank();
+        prankAction.focus();
       });
       const languageToggle = document.createElement("button");
       languageToggle.type = "button";
