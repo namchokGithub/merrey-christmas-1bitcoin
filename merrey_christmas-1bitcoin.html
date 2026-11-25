@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&amp;family=Pacifico&amp;family=Mali:wght@400;600&amp;display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600&amp;display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&amp;family=Pacifico&amp;family=Mali:wght@400;600&amp;display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600&amp;display=swap" />
     <link
       rel="icon"
       href="data:image/svg+xml,
@@ -176,8 +180,38 @@
         animation: spark-fall 850ms ease-out forwards;
       }
       @keyframes spark-fall {
-        from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        to { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(.3) rotate(100deg); }
+        from {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
+            scale(0.3) rotate(100deg);
+        }
+      }
+      .shooting-star {
+        position: fixed;
+        z-index: 3;
+        top: -10px;
+        right: 5%;
+        width: 100px;
+        height: 2px;
+        pointer-events: none;
+        background: linear-gradient(to right, #fff9df, transparent);
+        box-shadow: 0 0 8px #f8df95;
+        opacity: 0;
+        transform: rotate(-35deg);
+        animation: shooting-star 1.4s ease-out forwards;
+      }
+      @keyframes shooting-star {
+        15% {
+          opacity: 0.65;
+        }
+        to {
+          opacity: 0;
+          transform: translate(-55vw, 45vh) rotate(-35deg);
+        }
       }
       .flake {
         position: absolute;
@@ -221,16 +255,44 @@
         background: #102d2d;
         color: #ffedc7;
       }
-      .language-toggle:hover { background: #285443; }
-      html[lang="th"] .container { font-family: "Google Sans", Tahoma, Arial, sans-serif; }
-      html[lang="en"] .eyebrow, html[lang="en"] .footer, html[lang="en"] .container button { font-family: "Playfair Display", Arial, sans-serif; }
-      html[lang="th"] .eyebrow, html[lang="th"] .footer { font-family: "Google Sans", Tahoma, Arial, sans-serif; }
-      html[lang="en"] .signature { font-family: Pacifico, Georgia, serif; font-style: normal; }
-      html[lang="th"] .signature { font-family: Mali, Tahoma, Arial, sans-serif; font-style: normal; }
-      html[lang="th"] .container button { font-family: "Google Sans", Arial, sans-serif; }
-      html[lang="th"] h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.25; }
-      html[lang="th"] .eyebrow, html[lang="th"] .footer { letter-spacing: normal; line-height: 1.6; }
-      .container { padding-bottom: 90px; }
+      .language-toggle:hover {
+        background: #285443;
+      }
+      html[lang="th"] .container {
+        font-family: "Google Sans", Tahoma, Arial, sans-serif;
+      }
+      html[lang="en"] .eyebrow,
+      html[lang="en"] .footer,
+      html[lang="en"] .container button {
+        font-family: "Playfair Display", Arial, sans-serif;
+      }
+      html[lang="th"] .eyebrow,
+      html[lang="th"] .footer {
+        font-family: "Google Sans", Tahoma, Arial, sans-serif;
+      }
+      html[lang="en"] .signature {
+        font-family: Pacifico, Georgia, serif;
+        font-style: normal;
+      }
+      html[lang="th"] .signature {
+        font-family: Mali, Tahoma, Arial, sans-serif;
+        font-style: normal;
+      }
+      html[lang="th"] .container button {
+        font-family: "Google Sans", Arial, sans-serif;
+      }
+      html[lang="th"] h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        line-height: 1.25;
+      }
+      html[lang="th"] .eyebrow,
+      html[lang="th"] .footer {
+        letter-spacing: normal;
+        line-height: 1.6;
+      }
+      .container {
+        padding-bottom: 90px;
+      }
       .message {
         max-width: 420px;
         margin: 22px auto;
@@ -435,7 +497,7 @@
           footer: "Made with love & a little Christmas magic",
           open: "✦ Open your Christmas wish",
           close: "✦ Close your Christmas wish",
-          switchLabel: "เปลี่ยนเป็นภาษาไทย"
+          switchLabel: "เปลี่ยนเป็นภาษาไทย",
         },
         th: {
           title: "สุขสันต์วันคริสต์มาส!",
@@ -446,8 +508,8 @@
           footer: "ทำด้วยความรักและมนตร์วิเศษแห่งคริสต์มาส",
           open: "✦ เปิดคำอวยพรคริสต์มาส",
           close: "✦ ปิดคำอวยพรคริสต์มาส",
-          switchLabel: "Switch to English"
-        }
+          switchLabel: "Switch to English",
+        },
       };
       let language = "en";
       const languageToggle = document.createElement("button");
@@ -464,8 +526,11 @@
         container.querySelector("#message p").textContent = text.wish;
         container.querySelector(".signature").textContent = text.signature;
         container.querySelector(".footer").textContent = text.footer;
-        button.textContent = document.getElementById("message").hidden ? text.open : text.close;
-        languageToggle.textContent = language === "en" ? "ไทย / EN" : "TH / English";
+        button.textContent = document.getElementById("message").hidden
+          ? text.open
+          : text.close;
+        languageToggle.textContent =
+          language === "en" ? "ไทย / EN" : "TH / English";
         languageToggle.setAttribute("aria-label", text.switchLabel);
       }
       languageToggle.addEventListener("click", () => {
@@ -475,7 +540,22 @@
       button.addEventListener("click", renderLanguage);
       renderLanguage();
       document.addEventListener("click", (event) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+          return;
+        const starCount = 1 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < starCount; i++) {
+          const shootingStar = document.createElement("span");
+          shootingStar.className = "shooting-star";
+          shootingStar.setAttribute("aria-hidden", "true");
+          shootingStar.style.right = 5 + Math.random() * 40 + "%";
+          shootingStar.style.animationDelay = i * 0.18 + "s";
+          shootingStar.addEventListener(
+            "animationend",
+            () => shootingStar.remove(),
+            { once: true },
+          );
+          document.body.appendChild(shootingStar);
+        }
         for (let i = 0; i < 6; i++) {
           const spark = document.createElement("span");
           spark.className = "click-spark";
@@ -483,10 +563,12 @@
           spark.textContent = "✦";
           spark.style.left = event.clientX + "px";
           spark.style.top = event.clientY + "px";
-          spark.style.fontSize = (8 + Math.random() * 10) + "px";
-          spark.style.setProperty("--x", (Math.random() * 100 - 50) + "px");
-          spark.style.setProperty("--y", (30 + Math.random() * 75) + "px");
-          spark.addEventListener("animationend", () => spark.remove(), { once: true });
+          spark.style.fontSize = 8 + Math.random() * 10 + "px";
+          spark.style.setProperty("--x", Math.random() * 100 - 50 + "px");
+          spark.style.setProperty("--y", 30 + Math.random() * 75 + "px");
+          spark.addEventListener("animationend", () => spark.remove(), {
+            once: true,
+          });
           document.body.appendChild(spark);
         }
       });
