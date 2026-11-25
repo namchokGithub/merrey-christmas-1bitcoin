@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,
+  %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
+  %3Ctext y='.9em' font-size='90'%3E🎄%3C/text%3E
+  %3C/svg%3E" />
     <title>Merry Christmas!</title>
     <style>
       body {
@@ -87,66 +93,379 @@
       </div>
     </div>
     <style>
-      body { min-height: 100svh; height: auto; overflow-x: hidden; background: radial-gradient(ellipse at 50% 75%, #285443, #102d2d 48%, #081a27); color: #fff4dd; font-family: Georgia, serif; }
-      .container { position: relative; z-index: 1; padding: 50px 24px; }
-      h1 { color: #ffedc7; font-size: clamp(3rem, 10vw, 5.5rem); font-weight: normal; line-height: 1; margin: 14px 0 30px; text-shadow: 0 0 35px #e8b76b55; }
-      .eyebrow, .footer { font: 11px Arial, sans-serif; letter-spacing: .25em; text-transform: uppercase; color: #e8c987; }
-      .intro { color: #cbdcd1; line-height: 1.6; margin-bottom: 35px; }
-      .tree { margin-bottom: 30px; filter: drop-shadow(0 15px 18px #00120e88); }
-      .triangle.green1 { border-bottom-color: #17513e; } .triangle.green2 { border-bottom-color: #286b51; } .triangle.green3 { border-bottom-color: #3d8061; }
-      .star { background: #ffe6a2; animation: glow 2s ease-in-out infinite alternate; }
-      @keyframes glow { to { box-shadow: 0 0 20px #ffe6a2, 0 0 45px #ffc65c; } }
-      .snow { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
-      .flake { position: absolute; top: -2rem; color: white; opacity: .65; animation: fall var(--duration) linear infinite; animation-delay: var(--delay); font-size: var(--size); }
-      @keyframes fall { to { transform: translate3d(var(--drift), 110vh, 0) rotate(180deg); } }
-      button { cursor: pointer; border: 1px solid #e2bd79; border-radius: 99px; background: #e9c989; color: #18392e; padding: 14px 25px; font: 600 13px Arial, sans-serif; letter-spacing: .04em; }
-      button:hover { background: #ffe3a7; } button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
-      .message { max-width: 420px; margin: 22px auto; color: #f8ebd0; line-height: 1.7; animation: appear .7s ease both; }
-      .signature { color: #e9c987; font-style: italic; } .footer { margin-top: 36px; color: #a8c1b3; }
-      @keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+      body {
+        min-height: 100svh;
+        height: auto;
+        overflow-x: hidden;
+        background: radial-gradient(
+          ellipse at 50% 75%,
+          #285443,
+          #102d2d 48%,
+          #081a27
+        );
+        color: #fff4dd;
+        font-family: Georgia, serif;
+      }
+      .container {
+        position: relative;
+        z-index: 1;
+        padding: 50px 24px;
+      }
+      h1 {
+        color: #ffedc7;
+        font-size: clamp(3rem, 10vw, 5.5rem);
+        font-weight: normal;
+        line-height: 1;
+        margin: 14px 0 30px;
+        text-shadow: 0 0 35px #e8b76b55;
+      }
+      .eyebrow,
+      .footer {
+        font:
+          11px Arial,
+          sans-serif;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #e8c987;
+      }
+      .intro {
+        color: #cbdcd1;
+        line-height: 1.6;
+        margin-bottom: 35px;
+      }
+      .tree {
+        margin-bottom: 30px;
+        filter: drop-shadow(0 15px 18px #00120e88);
+      }
+      .triangle.green1 {
+        border-bottom-color: #17513e;
+      }
+      .triangle.green2 {
+        border-bottom-color: #286b51;
+      }
+      .triangle.green3 {
+        border-bottom-color: #3d8061;
+      }
+      .star {
+        background: #ffe6a2;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        to {
+          box-shadow:
+            0 0 20px #ffe6a2,
+            0 0 45px #ffc65c;
+        }
+      }
+      .snow {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .flake {
+        position: absolute;
+        top: -2rem;
+        color: white;
+        opacity: 0.65;
+        animation: fall var(--duration) linear infinite;
+        animation-delay: var(--delay);
+        font-size: var(--size);
+      }
+      @keyframes fall {
+        to {
+          transform: translate3d(var(--drift), 110vh, 0) rotate(180deg);
+        }
+      }
+      button {
+        cursor: pointer;
+        border: 1px solid #e2bd79;
+        border-radius: 99px;
+        background: #e9c989;
+        color: #18392e;
+        padding: 14px 25px;
+        font:
+          600 13px Arial,
+          sans-serif;
+        letter-spacing: 0.04em;
+      }
+      button:hover {
+        background: #ffe3a7;
+      }
+      button:focus-visible {
+        outline: 3px solid white;
+        outline-offset: 4px;
+      }
+      .language-toggle {
+        position: fixed;
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+        z-index: 10;
+        padding: 11px 16px;
+        background: #102d2d;
+        color: #ffedc7;
+      }
+      .language-toggle:hover { background: #285443; }
+      html[lang="th"] .container { font-family: Tahoma, Arial, sans-serif; }
+      html[lang="th"] h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.25; }
+      html[lang="th"] .eyebrow, html[lang="th"] .footer { letter-spacing: normal; line-height: 1.6; }
+      .container { padding-bottom: 90px; }
+      .message {
+        max-width: 420px;
+        margin: 22px auto;
+        color: #f8ebd0;
+        line-height: 1.7;
+        animation: appear 0.7s ease both;
+      }
+      .signature {
+        color: #e9c987;
+        font-style: italic;
+      }
+      .footer {
+        margin-top: 36px;
+        color: #a8c1b3;
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
     </style>
     <style>
-      .sleigh-flight { position: fixed; z-index: 2; top: 5%; left: -300px; width: 250px; height: 100px; pointer-events: none; animation: fly-across 24s linear infinite; }
-      .sleigh { position: absolute; left: 15px; top: 53px; width: 85px; height: 30px; background: #b92e38; border-radius: 8px 8px 35px 30px; border-bottom: 4px solid #79202c; }
-      .sleigh::after { content: ''; position: absolute; left: -7px; top: 31px; width: 100px; height: 9px; border-bottom: 4px solid #edc77d; border-radius: 50%; }
-      .santa { position: absolute; left: 38px; top: 29px; width: 35px; height: 30px; background: #c9383d; border-radius: 45% 45% 15% 15%; }
-      .santa::before { content: ''; position: absolute; left: 7px; top: -20px; width: 22px; height: 23px; background: #f3d2b5; border-radius: 50%; border-bottom: 7px solid white; }
-      .santa::after { content: ''; position: absolute; left: 6px; top: -27px; width: 24px; height: 12px; background: #d53a40; border-radius: 80% 80% 0 0; border-bottom: 3px solid white; }
-      .reindeer { position: absolute; left: 163px; top: 46px; width: 55px; height: 25px; background: #9a613c; border-radius: 50%; }
-      .reindeer::before { content: ''; position: absolute; right: -12px; top: -13px; width: 23px; height: 20px; background: #a76c44; border-radius: 45%; box-shadow: 9px 3px 0 -6px #e75650; }
-      .reindeer::after { content: ''; position: absolute; right: -1px; top: -25px; width: 15px; height: 16px; border-left: 3px solid #60402d; border-right: 3px solid #60402d; transform: rotate(-12deg); }
-      .legs { position: absolute; top: 18px; left: 10px; width: 34px; height: 20px; border-left: 4px solid #795037; border-right: 4px solid #795037; transform: skew(-25deg); }
-      .reins { position: absolute; left: 92px; top: 60px; width: 75px; border-top: 2px solid #e0c5a3; transform: rotate(-5deg); }
-      @keyframes fly-across { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 300px)); } }
-      @media (prefers-reduced-motion: reduce) { .sleigh-flight { animation: none; left: auto; right: 5%; transform: scale(.7); transform-origin: top right; } }
+      .sleigh-flight {
+        position: fixed;
+        z-index: 2;
+        top: 5%;
+        left: -300px;
+        width: 250px;
+        height: 100px;
+        pointer-events: none;
+        animation: fly-across 24s linear infinite;
+      }
+      .sleigh {
+        position: absolute;
+        left: 15px;
+        top: 53px;
+        width: 85px;
+        height: 30px;
+        background: #b92e38;
+        border-radius: 8px 8px 35px 30px;
+        border-bottom: 4px solid #79202c;
+      }
+      .sleigh::after {
+        content: "";
+        position: absolute;
+        left: -7px;
+        top: 31px;
+        width: 100px;
+        height: 9px;
+        border-bottom: 4px solid #edc77d;
+        border-radius: 50%;
+      }
+      .santa {
+        position: absolute;
+        left: 38px;
+        top: 29px;
+        width: 35px;
+        height: 30px;
+        background: #c9383d;
+        border-radius: 45% 45% 15% 15%;
+      }
+      .santa::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: -20px;
+        width: 22px;
+        height: 23px;
+        background: #f3d2b5;
+        border-radius: 50%;
+        border-bottom: 7px solid white;
+      }
+      .santa::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: -27px;
+        width: 24px;
+        height: 12px;
+        background: #d53a40;
+        border-radius: 80% 80% 0 0;
+        border-bottom: 3px solid white;
+      }
+      .reindeer {
+        position: absolute;
+        left: 163px;
+        top: 46px;
+        width: 55px;
+        height: 25px;
+        background: #9a613c;
+        border-radius: 50%;
+      }
+      .reindeer::before {
+        content: "";
+        position: absolute;
+        right: -12px;
+        top: -13px;
+        width: 23px;
+        height: 20px;
+        background: #a76c44;
+        border-radius: 45%;
+        box-shadow: 9px 3px 0 -6px #e75650;
+      }
+      .reindeer::after {
+        content: "";
+        position: absolute;
+        right: -1px;
+        top: -25px;
+        width: 15px;
+        height: 16px;
+        border-left: 3px solid #60402d;
+        border-right: 3px solid #60402d;
+        transform: rotate(-12deg);
+      }
+      .legs {
+        position: absolute;
+        top: 18px;
+        left: 10px;
+        width: 34px;
+        height: 20px;
+        border-left: 4px solid #795037;
+        border-right: 4px solid #795037;
+        transform: skew(-25deg);
+      }
+      .reins {
+        position: absolute;
+        left: 92px;
+        top: 60px;
+        width: 75px;
+        border-top: 2px solid #e0c5a3;
+        transform: rotate(-5deg);
+      }
+      @keyframes fly-across {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(calc(100vw + 300px));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .sleigh-flight {
+          animation: none;
+          left: auto;
+          right: 5%;
+          transform: scale(0.7);
+          transform-origin: top right;
+        }
+      }
     </style>
-    <div class="sleigh-flight" aria-hidden="true"><div class="santa"></div><div class="sleigh"></div><div class="reins"></div><div class="reindeer"><div class="legs"></div></div></div>
+    <div class="sleigh-flight" aria-hidden="true">
+      <div class="santa"></div>
+      <div class="sleigh"></div>
+      <div class="reins"></div>
+      <div class="reindeer"><div class="legs"></div></div>
+    </div>
     <script>
-      const container = document.querySelector('.container');
-      const heading = container.querySelector('h1');
-      heading.insertAdjacentHTML('beforebegin', '<p class="eyebrow">A little Christmas wish for you</p>');
-      heading.insertAdjacentHTML('afterend', '<p class="intro">A little sparkle, a little magic, and a wish from me to you.</p>');
-      container.insertAdjacentHTML('beforeend', '<button type="button" aria-expanded="false" aria-controls="message">✦ Open your Christmas wish</button><div id="message" class="message" hidden><p>May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.</p><span class="signature">With love, just for you ♥</span></div><p class="footer">Made with love &amp; a little Christmas magic</p>');
-      const button = container.querySelector('button');
-      button.addEventListener('click', () => {
-        const message = document.getElementById('message');
+      const container = document.querySelector(".container");
+      const heading = container.querySelector("h1");
+      heading.insertAdjacentHTML(
+        "beforebegin",
+        '<p class="eyebrow">A little Christmas wish for you</p>',
+      );
+      heading.insertAdjacentHTML(
+        "afterend",
+        '<p class="intro">A little sparkle, a little magic, and a wish from me to you.</p>',
+      );
+      container.insertAdjacentHTML(
+        "beforeend",
+        '<button type="button" aria-expanded="false" aria-controls="message">✦ Open your Christmas wish</button><div id="message" class="message" hidden><p>May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.</p><span class="signature">With love, just for you ♥</span></div><p class="footer">Made with love &amp; a little Christmas magic</p>',
+      );
+      const button = container.querySelector("button");
+      button.addEventListener("click", () => {
+        const message = document.getElementById("message");
         const opening = message.hidden;
         message.hidden = !opening;
-        button.setAttribute('aria-expanded', String(opening));
-        button.textContent = opening ? '✦ Close your Christmas wish' : '✦ Open your Christmas wish';
+        button.setAttribute("aria-expanded", String(opening));
+        button.textContent = opening
+          ? "✦ Close your Christmas wish"
+          : "✦ Open your Christmas wish";
       });
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const snow = document.createElement('div');
-        snow.className = 'snow'; snow.setAttribute('aria-hidden', 'true');
+      const translations = {
+        en: {
+          title: "Merry Christmas!",
+          eyebrow: "A little Christmas wish for you",
+          intro: "A little sparkle, a little magic, and a wish from me to you.",
+          wish: "May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.",
+          signature: "With love, just for you ♥",
+          footer: "Made with love & a little Christmas magic",
+          open: "✦ Open your Christmas wish",
+          close: "✦ Close your Christmas wish",
+          switchLabel: "เปลี่ยนเป็นภาษาไทย"
+        },
+        th: {
+          title: "สุขสันต์วันคริสต์มาส!",
+          eyebrow: "คำอวยพรคริสต์มาสเล็ก ๆ สำหรับคุณ",
+          intro: "ส่งประกายความสุขและความมหัศจรรย์เล็ก ๆ จากฉันถึงคุณ",
+          wish: "ขอให้คริสต์มาสของคุณเต็มไปด้วยความอบอุ่น เสียงหัวเราะ และสิ่งเล็ก ๆ ที่ทำให้มีความสุข ขอบคุณที่เป็นเพื่อนที่แสนดีเสมอมา",
+          signature: "ด้วยความรัก ส่งให้คุณโดยเฉพาะ ♥",
+          footer: "ทำด้วยความรักและมนตร์วิเศษแห่งคริสต์มาส",
+          open: "✦ เปิดคำอวยพรคริสต์มาส",
+          close: "✦ ปิดคำอวยพรคริสต์มาส",
+          switchLabel: "Switch to English"
+        }
+      };
+      let language = "en";
+      const languageToggle = document.createElement("button");
+      languageToggle.type = "button";
+      languageToggle.className = "language-toggle";
+      document.body.appendChild(languageToggle);
+      function renderLanguage() {
+        const text = translations[language];
+        document.documentElement.lang = language;
+        document.title = text.title;
+        heading.textContent = text.title;
+        container.querySelector(".eyebrow").textContent = text.eyebrow;
+        container.querySelector(".intro").textContent = text.intro;
+        container.querySelector("#message p").textContent = text.wish;
+        container.querySelector(".signature").textContent = text.signature;
+        container.querySelector(".footer").textContent = text.footer;
+        button.textContent = document.getElementById("message").hidden ? text.open : text.close;
+        languageToggle.textContent = language === "en" ? "ไทย / EN" : "TH / English";
+        languageToggle.setAttribute("aria-label", text.switchLabel);
+      }
+      languageToggle.addEventListener("click", () => {
+        language = language === "en" ? "th" : "en";
+        renderLanguage();
+      });
+      button.addEventListener("click", renderLanguage);
+      renderLanguage();
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const snow = document.createElement("div");
+        snow.className = "snow";
+        snow.setAttribute("aria-hidden", "true");
         for (let i = 0; i < 38; i++) {
-          const flake = document.createElement('span');
-          flake.className = 'flake'; flake.textContent = '✦';
-          flake.style.left = Math.random() * 100 + '%';
-          flake.style.setProperty('--duration', (9 + Math.random() * 14) + 's');
-          flake.style.setProperty('--delay', (-Math.random() * 20) + 's');
-          flake.style.setProperty('--size', (5 + Math.random() * 9) + 'px');
-          flake.style.setProperty('--drift', (-40 + Math.random() * 80) + 'px');
+          const flake = document.createElement("span");
+          flake.className = "flake";
+          flake.textContent = "✦";
+          flake.style.left = Math.random() * 100 + "%";
+          flake.style.setProperty("--duration", 9 + Math.random() * 14 + "s");
+          flake.style.setProperty("--delay", -Math.random() * 20 + "s");
+          flake.style.setProperty("--size", 5 + Math.random() * 9 + "px");
+          flake.style.setProperty("--drift", -40 + Math.random() * 80 + "px");
           snow.appendChild(flake);
         }
         document.body.appendChild(snow);
