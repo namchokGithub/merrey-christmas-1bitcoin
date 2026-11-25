@@ -408,6 +408,93 @@
         line-height: 1.7;
         animation: appear 0.7s ease both;
       }
+      .prank-modal {
+        width: min(420px, calc(100vw - 40px));
+        box-sizing: border-box;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        border-radius: 12px;
+        background: #f5f5f5;
+        color: #262626;
+        text-align: left;
+        font-family: Arial, Tahoma, sans-serif;
+        box-shadow: 0 20px 70px #000a;
+      }
+      .prank-modal::backdrop {
+        background: #080808c9;
+      }
+      .prank-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 24px;
+        background: #bd2631;
+        color: white;
+      }
+      .prank-icon {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border: 3px solid white;
+        border-radius: 50%;
+        font:
+          700 34px Arial,
+          sans-serif;
+      }
+      .prank-header p {
+        margin: 0 0 5px;
+        font:
+          700 11px Arial,
+          sans-serif;
+        letter-spacing: 0.16em;
+      }
+      .prank-modal h2 {
+        margin: 0;
+        color: white;
+        font:
+          700 24px Arial,
+          Tahoma,
+          sans-serif;
+      }
+      .prank-body {
+        padding: 26px 24px;
+      }
+      .prank-body p {
+        margin: 0;
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .prank-amount {
+        display: block;
+        margin: 20px 0;
+        color: #b1202e;
+        font:
+          700 32px Arial,
+          sans-serif;
+      }
+      .prank-body .prank-reveal {
+        margin-bottom: 16px;
+      }
+      .prank-modal .prank-action {
+        display: block;
+        margin: 20px 0 0 auto;
+        padding: 12px 22px;
+        border: 0;
+        border-radius: 6px;
+        background: #bd2631;
+        color: white;
+        font:
+          700 14px Arial,
+          Tahoma,
+          sans-serif;
+        letter-spacing: 0;
+      }
+      .prank-modal .prank-action:hover {
+        background: #941d27;
+      }
       .signature {
         color: #e9c987;
         font-style: italic;
@@ -565,6 +652,24 @@
       }
     </style>
     <div class="aurora" aria-hidden="true"></div>
+    <dialog
+      class="prank-modal"
+      aria-labelledby="prank-title"
+      aria-describedby="prank-description">
+      <div class="prank-header">
+        <span class="prank-icon" aria-hidden="true">!</span>
+        <div>
+          <p>WARNING</p>
+          <h2 id="prank-title"></h2>
+        </div>
+      </div>
+      <div class="prank-body">
+        <p id="prank-description"></p>
+        <strong class="prank-amount"></strong>
+        <p class="prank-reveal" hidden></p>
+        <button type="button" class="prank-action"></button>
+      </div>
+    </dialog>
     <div class="sleigh-flight" aria-hidden="true">
       <svg
         viewBox="0 0 250 100"
@@ -669,10 +774,26 @@
         '<button type="button" aria-expanded="false" aria-controls="message">✦ Open your Christmas wish</button><div id="message" class="message" hidden><p>May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.</p><span class="signature">With love, just for you ♥</span></div><p class="footer">Made with love &amp; a little Christmas magic</p>',
       );
       const button = container.querySelector("button");
+      const prank = document.querySelector(".prank-modal");
+      const prankAction = prank.querySelector(".prank-action");
+      let prankTimer;
+      let prankShown = false;
+      let prankRevealed = false;
       button.addEventListener("click", () => {
         const message = document.getElementById("message");
         const opening = message.hidden;
         message.hidden = !opening;
+        clearTimeout(prankTimer);
+        if (opening && !prankShown) {
+          prankTimer = setTimeout(() => {
+            if (message.hidden || prank.open) return;
+            prankShown = true;
+            prank.querySelector(".prank-amount").textContent =
+              (0.5 + Math.random() * 0.5).toFixed(3) + " BTC";
+            renderPrank();
+            prank.showModal();
+          }, 2500);
+        }
         button.setAttribute("aria-expanded", String(opening));
         button.textContent = opening
           ? "✦ Close your Christmas wish"
@@ -703,12 +824,40 @@
         },
       };
       let language = "en";
+      function renderPrank() {
+        const thai = language === "th";
+        prank.querySelector("#prank-title").textContent = thai
+          ? "แจ้งเตือน!"
+          : "Scam alert!";
+        prank.querySelector("#prank-description").textContent = thai
+          ? "Bitcoin ของคุณหายไปแล้ว!"
+          : "Your Bitcoin has disappeared!";
+        prank.querySelector(".prank-reveal").textContent = thai
+          ? "ล้อเล่นนะ! ไม่มี Bitcoin หายไปจริง ๆ สุขสันต์วันคริสต์มาส"
+          : "Just kidding! No Bitcoin was lost. Merry Christmas!";
+        prank.querySelector(".prank-reveal").hidden = !prankRevealed;
+        prankAction.textContent = prankRevealed
+          ? thai
+            ? "ปิด"
+            : "Close"
+          : thai
+            ? "เกิดอะไรขึ้น?"
+            : "What happened?";
+      }
+      prankAction.addEventListener("click", () => {
+        if (prankRevealed) prank.close();
+        else {
+          prankRevealed = true;
+          renderPrank();
+        }
+      });
       const languageToggle = document.createElement("button");
       languageToggle.type = "button";
       languageToggle.className = "language-toggle";
       document.body.appendChild(languageToggle);
       function renderLanguage() {
         const text = translations[language];
+        renderPrank();
         document.documentElement.lang = language;
         document.title = text.title;
         heading.textContent = text.title;
