@@ -119,6 +119,30 @@
         z-index: 1;
         padding: 50px 24px;
       }
+      .aurora {
+        position: fixed;
+        z-index: 0;
+        left: -20%;
+        right: -20%;
+        bottom: -15vh;
+        height: 45vh;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse at 35% 80%, #8a52e54a, transparent 50%),
+          radial-gradient(ellipse at 70% 90%, #ae67f038, transparent 48%);
+        filter: blur(30px);
+        animation: aurora-drift 12s ease-in-out infinite alternate;
+      }
+      @keyframes aurora-drift {
+        from {
+          transform: translateX(-5%) scaleY(0.9);
+          opacity: 0.6;
+        }
+        to {
+          transform: translateX(5%) scaleY(1.15);
+          opacity: 1;
+        }
+      }
       h1 {
         color: #ffedc7;
         font-size: clamp(3rem, 10vw, 5.5rem);
@@ -456,6 +480,7 @@
         }
       }
     </style>
+    <div class="aurora" aria-hidden="true"></div>
     <div class="sleigh-flight" aria-hidden="true">
       <div class="santa"></div>
       <div class="sleigh"></div>
