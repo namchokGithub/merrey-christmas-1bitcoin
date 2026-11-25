@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merry Christmas!</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #39443a;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        color: #f25a4e;
+        font-size: 3rem;
+        margin-bottom: 40px;
+      }
+
+      .tree {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        margin-bottom: -30px;
+      }
+
+      .triangle.green1 {
+        border-bottom: 100px solid #3b8b33;
+        z-index: 1;
+      }
+
+      .triangle.green2 {
+        border-bottom: 100px solid #6bae63;
+        z-index: 1;
+      }
+
+      .triangle.green3 {
+        border-bottom: 100px solid #8ecf89;
+        z-index: 1;
+      }
+
+      .trunk {
+        width: 40px;
+        height: 60px;
+        background-color: #774c23;
+        z-index: 0;
+      }
+
+      .star {
+        position: absolute;
+        top: -20px;
+        width: 20px;
+        height: 20px;
+        background-color: #ffd700;
+        border-radius: 50%;
+        box-shadow:
+          0 0 10px #ffd700,
+          0 0 20px #ffd700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Merry Christmas!</h1>
+      <div class="tree">
+        <div class="star"></div>
+        <div class="triangle green3"></div>
+        <div class="triangle green2"></div>
+        <div class="triangle green1"></div>
+        <div class="trunk"></div>
+      </div>
+    </div>
+    <style>
+      body { min-height: 100svh; height: auto; overflow-x: hidden; background: radial-gradient(ellipse at 50% 75%, #285443, #102d2d 48%, #081a27); color: #fff4dd; font-family: Georgia, serif; }
+      .container { position: relative; z-index: 1; padding: 50px 24px; }
+      h1 { color: #ffedc7; font-size: clamp(3rem, 10vw, 5.5rem); font-weight: normal; line-height: 1; margin: 14px 0 30px; text-shadow: 0 0 35px #e8b76b55; }
+      .eyebrow, .footer { font: 11px Arial, sans-serif; letter-spacing: .25em; text-transform: uppercase; color: #e8c987; }
+      .intro { color: #cbdcd1; line-height: 1.6; margin-bottom: 35px; }
+      .tree { margin-bottom: 30px; filter: drop-shadow(0 15px 18px #00120e88); }
+      .triangle.green1 { border-bottom-color: #17513e; } .triangle.green2 { border-bottom-color: #286b51; } .triangle.green3 { border-bottom-color: #3d8061; }
+      .star { background: #ffe6a2; animation: glow 2s ease-in-out infinite alternate; }
+      @keyframes glow { to { box-shadow: 0 0 20px #ffe6a2, 0 0 45px #ffc65c; } }
+      .snow { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+      .flake { position: absolute; top: -2rem; color: white; opacity: .65; animation: fall var(--duration) linear infinite; animation-delay: var(--delay); font-size: var(--size); }
+      @keyframes fall { to { transform: translate3d(var(--drift), 110vh, 0) rotate(180deg); } }
+      button { cursor: pointer; border: 1px solid #e2bd79; border-radius: 99px; background: #e9c989; color: #18392e; padding: 14px 25px; font: 600 13px Arial, sans-serif; letter-spacing: .04em; }
+      button:hover { background: #ffe3a7; } button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+      .message { max-width: 420px; margin: 22px auto; color: #f8ebd0; line-height: 1.7; animation: appear .7s ease both; }
+      .signature { color: #e9c987; font-style: italic; } .footer { margin-top: 36px; color: #a8c1b3; }
+      @keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+    </style>
+    <script>
+      const container = document.querySelector('.container');
+      const heading = container.querySelector('h1');
+      heading.insertAdjacentHTML('beforebegin', '<p class="eyebrow">A little Christmas wish for you</p>');
+      heading.insertAdjacentHTML('afterend', '<p class="intro">A little sparkle, a little magic, and a wish from me to you.</p>');
+      container.insertAdjacentHTML('beforeend', '<button type="button" aria-expanded="false" aria-controls="message">✦ Open your Christmas wish</button><div id="message" class="message" hidden><p>May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.</p><span class="signature">With love, just for you ♥</span></div><p class="footer">Made with love &amp; a little Christmas magic</p>');
+      const button = container.querySelector('button');
+      button.addEventListener('click', () => {
+        const message = document.getElementById('message');
+        const opening = message.hidden;
+        message.hidden = !opening;
+        button.setAttribute('aria-expanded', String(opening));
+        button.textContent = opening ? '✦ Close your Christmas wish' : '✦ Open your Christmas wish';
+      });
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const snow = document.createElement('div');
+        snow.className = 'snow'; snow.setAttribute('aria-hidden', 'true');
+        for (let i = 0; i < 38; i++) {
+          const flake = document.createElement('span');
+          flake.className = 'flake'; flake.textContent = '✦';
+          flake.style.left = Math.random() * 100 + '%';
+          flake.style.setProperty('--duration', (9 + Math.random() * 14) + 's');
+          flake.style.setProperty('--delay', (-Math.random() * 20) + 's');
+          flake.style.setProperty('--size', (5 + Math.random() * 9) + 'px');
+          flake.style.setProperty('--drift', (-40 + Math.random() * 80) + 'px');
+          snow.appendChild(flake);
+        }
+        document.body.appendChild(snow);
+      }
+    </script>
+  </body>
+</html>
