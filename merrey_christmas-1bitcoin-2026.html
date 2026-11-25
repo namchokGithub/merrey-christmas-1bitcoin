@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&amp;family=Pacifico&amp;family=Mali:wght@400;600&amp;display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600&amp;display=swap" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,
+  %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
+  %3Ctext y='.9em' font-size='90'%3E🎄%3C/text%3E
+  %3C/svg%3E" />
+    <title>Merry Christmas!</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #39443a;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      h1 {
+        color: #f25a4e;
+        font-size: 3rem;
+        margin-bottom: 40px;
+      }
+
+      .tree {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        margin-bottom: -30px;
+      }
+
+      .triangle.green1 {
+        border-bottom: 100px solid #3b8b33;
+        z-index: 1;
+      }
+
+      .triangle.green2 {
+        border-bottom: 100px solid #6bae63;
+        z-index: 1;
+      }
+
+      .triangle.green3 {
+        border-bottom: 100px solid #8ecf89;
+        z-index: 1;
+      }
+
+      .trunk {
+        width: 40px;
+        height: 60px;
+        background-color: #774c23;
+        z-index: 0;
+      }
+
+      .star {
+        position: absolute;
+        top: -20px;
+        width: 20px;
+        height: 20px;
+        background-color: #ffd700;
+        border-radius: 50%;
+        box-shadow:
+          0 0 10px #ffd700,
+          0 0 20px #ffd700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Merry Christmas!</h1>
+      <div class="tree">
+        <div class="star"></div>
+        <div class="triangle green3"></div>
+        <div class="triangle green2"></div>
+        <div class="triangle green1"></div>
+        <div class="trunk"></div>
+        <div class="tree-gifts" aria-hidden="true">
+          <div class="gift-box gift-red"><span></span></div>
+          <div class="gift-box gift-gold"><span></span></div>
+        </div>
+      </div>
+    </div>
+    <style>
+      body {
+        min-height: 100svh;
+        height: auto;
+        overflow-x: hidden;
+        background: radial-gradient(
+          ellipse at 50% 75%,
+          #285443,
+          #102d2d 48%,
+          #081a27
+        );
+        color: #fff4dd;
+        font-family: "Playfair Display", Georgia, serif;
+      }
+      .container {
+        position: relative;
+        z-index: 1;
+        padding: 50px 24px;
+      }
+      .aurora {
+        position: fixed;
+        z-index: 0;
+        left: -20%;
+        right: -20%;
+        bottom: -15vh;
+        height: 45vh;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse at 35% 80%, #8a52e54a, transparent 50%),
+          radial-gradient(ellipse at 70% 90%, #ae67f038, transparent 48%);
+        filter: blur(30px);
+        animation: aurora-drift 12s ease-in-out infinite alternate;
+      }
+      @keyframes aurora-drift {
+        from {
+          transform: translateX(-5%) scaleY(0.9);
+          opacity: 0.6;
+        }
+        to {
+          transform: translateX(5%) scaleY(1.15);
+          opacity: 1;
+        }
+      }
+      h1 {
+        color: #ffedc7;
+        font-size: clamp(3rem, 10vw, 5.5rem);
+        font-weight: normal;
+        line-height: 1;
+        margin: 14px 0 30px;
+        text-shadow: 0 0 35px #e8b76b55;
+      }
+      .eyebrow,
+      .footer {
+        font:
+          11px Arial,
+          sans-serif;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #e8c987;
+      }
+      .intro {
+        color: #cbdcd1;
+        line-height: 1.6;
+        margin-bottom: 35px;
+      }
+      .tree {
+        margin-bottom: 30px;
+        filter: drop-shadow(0 15px 18px #00120e88);
+      }
+      .tree-gifts {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 170px;
+        height: 60px;
+        transform: translateX(-50%);
+        z-index: 5;
+        pointer-events: none;
+      }
+      .gift-box {
+        position: absolute;
+        bottom: 0;
+        border-radius: 3px;
+        box-shadow: inset 0 -5px #0002;
+      }
+      .gift-box::before {
+        content: "";
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        top: 0;
+        height: 10px;
+        border-radius: 3px;
+        background: inherit;
+        filter: brightness(1.12);
+      }
+      .gift-box::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 43%;
+        width: 14%;
+        background: var(--ribbon);
+      }
+      .gift-box span::before,
+      .gift-box span::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        width: 15px;
+        height: 10px;
+        border: 3px solid var(--ribbon);
+        border-radius: 100% 100% 10% 100%;
+      }
+      .gift-box span::before {
+        right: 50%;
+        transform: rotate(20deg);
+      }
+      .gift-box span::after {
+        left: 50%;
+        transform: scaleX(-1) rotate(20deg);
+      }
+      .gift-red {
+        left: 15px;
+        width: 58px;
+        height: 46px;
+        background: #b72f3c;
+        --ribbon: #e8bb67;
+      }
+      .gift-gold {
+        right: 15px;
+        width: 47px;
+        height: 35px;
+        background: #e8bb67;
+        --ribbon: #b94350;
+      }
+      .triangle.green1 {
+        border-bottom-color: #17513e;
+      }
+      .triangle.green2 {
+        border-bottom-color: #286b51;
+      }
+      .triangle.green3 {
+        border-bottom-color: #3d8061;
+      }
+      .star {
+        background: #ffd970;
+        border-radius: 0;
+        clip-path: polygon(
+          50% 0%,
+          61% 35%,
+          98% 35%,
+          68% 57%,
+          79% 91%,
+          50% 70%,
+          21% 91%,
+          32% 57%,
+          2% 35%,
+          39% 35%
+        );
+        filter: drop-shadow(0 0 8px #ffeb92);
+        animation: glow 1s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        to {
+          filter: drop-shadow(0 0 14px #ffc65c) brightness(1.35);
+        }
+      }
+      .snow {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .click-spark {
+        position: fixed;
+        z-index: 20;
+        pointer-events: none;
+        color: #ffe6a2;
+        text-shadow: 0 0 8px #ffc65c;
+        animation: spark-fall 850ms ease-out forwards;
+      }
+      @keyframes spark-fall {
+        from {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
+            scale(0.3) rotate(100deg);
+        }
+      }
+      .shooting-star {
+        position: fixed;
+        z-index: 3;
+        top: -10px;
+        right: 5%;
+        width: 100px;
+        height: 2px;
+        pointer-events: none;
+        background: linear-gradient(to right, #fff9df, transparent);
+        box-shadow: 0 0 8px #f8df95;
+        opacity: 0;
+        transform: rotate(-35deg);
+        animation: shooting-star 1.4s ease-out forwards;
+      }
+      @keyframes shooting-star {
+        15% {
+          opacity: 0.65;
+        }
+        to {
+          opacity: 0;
+          transform: translate(-55vw, 45vh) rotate(-35deg);
+        }
+      }
+      .flake {
+        position: absolute;
+        top: -2rem;
+        color: white;
+        opacity: 0.65;
+        animation: fall var(--duration) linear infinite;
+        animation-delay: var(--delay);
+        font-size: var(--size);
+      }
+      @keyframes fall {
+        to {
+          transform: translate3d(var(--drift), 110vh, 0) rotate(180deg);
+        }
+      }
+      button {
+        cursor: pointer;
+        border: 1px solid #e2bd79;
+        border-radius: 99px;
+        background: #e9c989;
+        color: #18392e;
+        padding: 14px 25px;
+        font:
+          600 13px Arial,
+          sans-serif;
+        letter-spacing: 0.04em;
+      }
+      button:hover {
+        background: #ffe3a7;
+      }
+      button:focus-visible {
+        outline: 3px solid white;
+        outline-offset: 4px;
+      }
+      .language-toggle {
+        position: fixed;
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(16px, env(safe-area-inset-bottom));
+        z-index: 10;
+        padding: 11px 16px;
+        background: #102d2d;
+        color: #ffedc7;
+      }
+      .language-toggle:hover {
+        background: #285443;
+      }
+      html[lang="th"] .container {
+        font-family: "Google Sans", Tahoma, Arial, sans-serif;
+      }
+      html[lang="en"] .eyebrow,
+      html[lang="en"] .footer,
+      html[lang="en"] .container button {
+        font-family: "Playfair Display", Arial, sans-serif;
+      }
+      html[lang="th"] .eyebrow,
+      html[lang="th"] .footer {
+        font-family: "Google Sans", Tahoma, Arial, sans-serif;
+      }
+      html[lang="en"] .signature {
+        font-family: Pacifico, Georgia, serif;
+        font-style: normal;
+      }
+      html[lang="th"] .signature {
+        font-family: Mali, Tahoma, Arial, sans-serif;
+        font-style: normal;
+      }
+      html[lang="th"] .container button {
+        font-family: "Google Sans", Arial, sans-serif;
+      }
+      html[lang="th"] h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        line-height: 1.25;
+      }
+      html[lang="th"] .eyebrow,
+      html[lang="th"] .footer {
+        letter-spacing: normal;
+        line-height: 1.6;
+      }
+      .container {
+        padding-bottom: 90px;
+      }
+      .message {
+        max-width: 420px;
+        margin: 22px auto;
+        color: #f8ebd0;
+        line-height: 1.7;
+        animation: appear 0.7s ease both;
+      }
+      .prank-modal {
+        width: min(420px, calc(100vw - 40px));
+        box-sizing: border-box;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        border-radius: 12px;
+        background: #f5f5f5;
+        color: #262626;
+        text-align: left;
+        font-family: Arial, Tahoma, sans-serif;
+        box-shadow: 0 20px 70px #000a;
+      }
+      .prank-modal::backdrop {
+        background: #080808c9;
+      }
+      .prank-modal[open] { animation: alert-shake .45s ease-out; }
+      .container.alert-shake { animation: alert-shake .45s ease-out; }
+      @keyframes alert-shake {
+        0%, 100% { transform: translateX(0); }
+        20% { transform: translateX(-9px); }
+        40% { transform: translateX(8px); }
+        60% { transform: translateX(-5px); }
+        80% { transform: translateX(3px); }
+      }
+      @media (prefers-reduced-motion: reduce) { .prank-modal[open], .container.alert-shake { animation: none; } }
+      .prank-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 24px;
+        background: #bd2631;
+        color: white;
+      }
+      .prank-icon {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border: 3px solid white;
+        border-radius: 50%;
+        font:
+          700 34px Arial,
+          sans-serif;
+      }
+      .prank-header p {
+        margin: 0 0 5px;
+        font:
+          700 11px Arial,
+          sans-serif;
+        letter-spacing: 0.16em;
+      }
+      .prank-modal h2 {
+        margin: 0;
+        color: white;
+        font:
+          700 24px Arial,
+          Tahoma,
+          sans-serif;
+      }
+      .prank-body {
+        padding: 26px 24px;
+      }
+      .prank-body p {
+        margin: 0;
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .prank-amount {
+        display: block;
+        margin: 20px 0;
+        color: #b1202e;
+        font:
+          700 32px Arial,
+          sans-serif;
+      }
+      .prank-body .prank-reveal {
+        margin-bottom: 16px;
+      }
+      .prank-modal .prank-action {
+        display: block;
+        margin: 20px 0 0 auto;
+        padding: 12px 22px;
+        border: 0;
+        border-radius: 6px;
+        background: #bd2631;
+        color: white;
+        font:
+          700 14px Arial,
+          Tahoma,
+          sans-serif;
+        letter-spacing: 0;
+      }
+      .prank-modal .prank-action:hover {
+        background: #941d27;
+      }
+      .prank-actions { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 20px; }
+      .prank-modal .prank-action { margin: 0; }
+      .prank-modal .prank-more { padding: 12px 18px; border: 1px solid #bd2631; border-radius: 6px; background: transparent; color: #a51f2a; font: 700 14px Arial, Tahoma, sans-serif; letter-spacing: 0; }
+      .prank-modal .prank-more:hover { background: #fce8e9; }
+      .signature {
+        color: #e9c987;
+        font-style: italic;
+      }
+      .footer {
+        margin-top: 36px;
+        color: #a8c1b3;
+      }
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+    <style>
+      .sleigh-flight {
+        position: fixed;
+        z-index: 2;
+        top: 5%;
+        left: -300px;
+        width: 250px;
+        height: 100px;
+        pointer-events: none;
+        animation: fly-across 24s linear infinite;
+      }
+      .sleigh {
+        position: absolute;
+        left: 15px;
+        top: 53px;
+        width: 85px;
+        height: 30px;
+        background: #b92e38;
+        border-radius: 8px 8px 35px 30px;
+        border-bottom: 4px solid #79202c;
+      }
+      .sleigh::after {
+        content: "";
+        position: absolute;
+        left: -7px;
+        top: 31px;
+        width: 100px;
+        height: 9px;
+        border-bottom: 4px solid #edc77d;
+        border-radius: 50%;
+      }
+      .santa {
+        position: absolute;
+        left: 38px;
+        top: 29px;
+        width: 35px;
+        height: 30px;
+        background: #c9383d;
+        border-radius: 45% 45% 15% 15%;
+      }
+      .santa::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: -20px;
+        width: 22px;
+        height: 23px;
+        background: #f3d2b5;
+        border-radius: 50%;
+        border-bottom: 7px solid white;
+      }
+      .santa::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: -27px;
+        width: 24px;
+        height: 12px;
+        background: #d53a40;
+        border-radius: 80% 80% 0 0;
+        border-bottom: 3px solid white;
+      }
+      .reindeer {
+        position: absolute;
+        left: 163px;
+        top: 46px;
+        width: 55px;
+        height: 25px;
+        background: #9a613c;
+        border-radius: 50%;
+      }
+      .reindeer::before {
+        content: "";
+        position: absolute;
+        right: -12px;
+        top: -13px;
+        width: 23px;
+        height: 20px;
+        background: #a76c44;
+        border-radius: 45%;
+        box-shadow: 9px 3px 0 -6px #e75650;
+      }
+      .reindeer::after {
+        content: "";
+        position: absolute;
+        right: -1px;
+        top: -25px;
+        width: 15px;
+        height: 16px;
+        border-left: 3px solid #60402d;
+        border-right: 3px solid #60402d;
+        transform: rotate(-12deg);
+      }
+      .legs {
+        position: absolute;
+        top: 18px;
+        left: 10px;
+        width: 34px;
+        height: 20px;
+        border-left: 4px solid #795037;
+        border-right: 4px solid #795037;
+        transform: skew(-25deg);
+      }
+      .reins {
+        position: absolute;
+        left: 92px;
+        top: 60px;
+        width: 75px;
+        border-top: 2px solid #e0c5a3;
+        transform: rotate(-5deg);
+      }
+      @keyframes fly-across {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(calc(100vw + 300px));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .sleigh-flight {
+          animation: none;
+          left: auto;
+          right: 5%;
+          transform: scale(0.7);
+          transform-origin: top right;
+        }
+      }
+    </style>
+    <div class="aurora" aria-hidden="true"></div>
+    <dialog
+      class="prank-modal"
+      aria-labelledby="prank-title"
+      aria-describedby="prank-description">
+      <div class="prank-header">
+        <span class="prank-icon" aria-hidden="true">!</span>
+        <div>
+          <p>WARNING</p>
+          <h2 id="prank-title"></h2>
+        </div>
+      </div>
+      <div class="prank-body">
+        <p id="prank-description"></p>
+        <strong class="prank-amount"></strong>
+        <p class="prank-reveal" hidden></p>
+        <div class="prank-actions"><button type="button" class="prank-more" hidden></button><button type="button" class="prank-action"></button></div>
+      </div>
+    </dialog>
+    <div class="sleigh-flight" aria-hidden="true">
+      <svg
+        viewBox="0 0 250 100"
+        width="250"
+        height="100"
+        xmlns="http://www.w3.org/2000/svg">
+        <!-- Gifts and Santa -->
+        <rect x="16" y="34" width="19" height="21" rx="2" fill="#e8bb67" />
+        <path d="M25 34v21M16 41h19" stroke="#b94350" stroke-width="3" />
+        <path
+          d="M35 56c0-15 5-23 17-23 12 0 17 11 18 23"
+          fill="#bd3441"
+          stroke="#842532"
+          stroke-width="2" />
+        <circle cx="52" cy="27" r="12" fill="#f2c6a8" />
+        <path
+          d="M40 28c0 11 5 17 12 18 8-1 12-7 12-18-2 5-5 6-8 5-2 4-6 4-8 0-3 1-6 0-8-5Z"
+          fill="#fff7e8" />
+        <circle cx="48" cy="26" r="1" fill="#533831" />
+        <circle cx="57" cy="26" r="1" fill="#533831" />
+        <circle cx="52.5" cy="30" r="2" fill="#e99a8e" />
+        <path d="M39 20c4-14 16-17 25-4l-2 6Z" fill="#cb3642" />
+        <path
+          d="M39 21q12-5 24 1"
+          fill="none"
+          stroke="#fff7e8"
+          stroke-width="4"
+          stroke-linecap="round" />
+        <circle cx="64" cy="16" r="3" fill="#fff7e8" />
+        <path
+          d="M62 40q8 2 13 11"
+          fill="none"
+          stroke="#bd3441"
+          stroke-width="7"
+          stroke-linecap="round" />
+        <circle cx="75" cy="51" r="3" fill="#fff7e8" />
+        <!-- Sleigh -->
+        <path
+          d="M8 53q6-6 13 2h68q7 0 10-6-1 23-18 28H28Q12 77 8 53Z"
+          fill="#b72f3c"
+          stroke="#7e202d"
+          stroke-width="2" />
+        <path
+          d="M11 54q6-4 11 4h65q8 0 11-7"
+          fill="none"
+          stroke="#f2cc7a"
+          stroke-width="4"
+          stroke-linecap="round" />
+        <path
+          d="M22 79l-3 8m62-8 3 8M12 86q2 7 14 7h59q10 0 15-7"
+          fill="none"
+          stroke="#e4bb74"
+          stroke-width="3"
+          stroke-linecap="round" />
+        <!-- Reindeer -->
+        <path
+          d="M93 55q29 13 75-2"
+          fill="none"
+          stroke="#dbc3a3"
+          stroke-width="1.5" />
+        <path
+          d="M171 59l-9 15-8 5m39-18 8 12-4 8m-15-20-3 16-8 5m30-24 10 9-3 8"
+          fill="none"
+          stroke="#805036"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
+        <ellipse cx="184" cy="51" rx="25" ry="12" fill="#aa7049" />
+        <path d="M160 49l-8-7 2 11" fill="#805036" />
+        <path d="M199 51l7-17 11 3-1 17" fill="#aa7049" />
+        <ellipse cx="216" cy="35" rx="13" ry="10" fill="#b87b50" />
+        <path d="M209 29q-10-10-13-4 2 7 13 8" fill="#8c573b" />
+        <path
+          d="M210 28q-9-9-9-18m4 13q-7 0-9-6m20 10q7-8 7-18m-4 13q8 0 10-6"
+          fill="none"
+          stroke="#66412e"
+          stroke-width="3"
+          stroke-linecap="round" />
+        <circle cx="220" cy="33" r="1.4" fill="#3d2921" />
+        <circle cx="229" cy="38" r="3.5" fill="#df514e" />
+        <path
+          d="M218 41q3 3 6 1"
+          fill="none"
+          stroke="#68402f"
+          stroke-linecap="round" />
+        <path d="M207 45l9 3" stroke="#e9c77f" stroke-width="2" />
+      </svg>
+    </div>
+    <script>
+      const container = document.querySelector(".container");
+      const heading = container.querySelector("h1");
+      heading.insertAdjacentHTML(
+        "beforebegin",
+        '<p class="eyebrow">A little Christmas wish for you</p>',
+      );
+      heading.insertAdjacentHTML(
+        "afterend",
+        '<p class="intro">A little sparkle, a little magic, and a wish from me to you.</p>',
+      );
+      container.insertAdjacentHTML(
+        "beforeend",
+        '<button type="button" aria-expanded="false" aria-controls="message">✦ Open your Christmas wish</button><div id="message" class="message" hidden><p>May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.</p><span class="signature">With love, just for you ♥</span></div><p class="footer">Made with love &amp; a little Christmas magic</p>',
+      );
+      const button = container.querySelector("button");
+      const prank = document.querySelector(".prank-modal");
+      const prankAction = prank.querySelector(".prank-action");
+      const prankMore = prank.querySelector(".prank-more");
+      let prankTimer;
+      let prankRevealed = false;
+      let prankChoice;
+      function choosePrank(avoidKind) {
+        let kind = Math.floor(Math.random() * (avoidKind === undefined ? 7 : 6));
+        if (avoidKind !== undefined && kind >= avoidKind) kind++;
+        prankChoice = { kind, btc: (500 + Math.floor(Math.random() * 501)) / 1000, baht: 25 + Math.floor(Math.random() * 2476), fridgeItem: Math.floor(Math.random() * 4) };
+      }
+      button.addEventListener("click", () => {
+        const message = document.getElementById("message");
+        const opening = message.hidden;
+        message.hidden = !opening;
+        clearTimeout(prankTimer);
+        if (opening) {
+          prankTimer = setTimeout(() => {
+            if (message.hidden || prank.open) return;
+            prankRevealed = false;
+            choosePrank();
+            renderPrank();
+            prank.showModal();
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              container.classList.add("alert-shake");
+              container.addEventListener("animationend", () => container.classList.remove("alert-shake"), { once: true });
+            }
+          }, 2000);
+        }
+        button.setAttribute("aria-expanded", String(opening));
+        button.textContent = opening
+          ? "✦ Close your Christmas wish"
+          : "✦ Open your Christmas wish";
+      });
+      const translations = {
+        en: {
+          title: "Merry Christmas!",
+          eyebrow: "A little Christmas wish for you",
+          intro: "A little sparkle, a little magic, and a wish from me to you.",
+          wish: "May your Christmas be filled with warmth, laughter, and all the little things that make you happy. Thank you for being a wonderful friend.",
+          signature: "With love, just for you ♥",
+          footer: "Made with love & a little Christmas magic",
+          open: "✦ Open your Christmas wish",
+          close: "✦ Close your Christmas wish",
+          switchLabel: "เปลี่ยนเป็นภาษาไทย",
+        },
+        th: {
+          title: "สุขสันต์วันคริสต์มาส!",
+          eyebrow: "คำอวยพรคริสต์มาสเล็ก ๆ สำหรับคุณ",
+          intro: "ส่งประกายความสุขและความมหัศจรรย์เล็ก ๆ จากฉันถึงคุณ",
+          wish: "ขอให้คริสต์มาสของคุณเต็มไปด้วยความอบอุ่น เสียงหัวเราะ และสิ่งเล็ก ๆ ที่ทำให้มีความสุข ขอบคุณที่เป็นเพื่อนที่แสนดีเสมอมา",
+          signature: "ด้วยความรัก ส่งให้คุณโดยเฉพาะ ♥",
+          footer: "ทำด้วยความรักและมนตร์วิเศษแห่งคริสต์มาส",
+          open: "✦ เปิดคำอวยพรคริสต์มาส",
+          close: "✦ ปิดคำอวยพรคริสต์มาส",
+          switchLabel: "Switch to English",
+        },
+      };
+      let language = "th";
+      function renderPrank() {
+        const thai = language === "th";
+        prank.querySelector("#prank-title").textContent = thai
+          ? "แจ้งเตือน!"
+          : "Scam alert!";
+        if (prankChoice) {
+          const items = thai
+            ? ["หมา", "แมว", "ขนม", "น้ำอัดลม"]
+            : ["dog", "cat", "snacks", "soda"];
+          const descriptions = thai
+            ? [
+                "Bitcoin ของคุณหายไปแล้ว!",
+                "เงินในบัญชีของคุณหายไปแล้ว!",
+                `${items[prankChoice.fridgeItem]}ในตู้เย็นของคุณหายไปแล้ว!`,
+                "ไม่มีใครยืนอยู่ข้างหลังคุณ",
+                "อ่านทำไม",
+                "ว่าแล้วคุณต้องอ่าน",
+                "อย่าให้มีครั้งที่ 4",
+              ]
+            : [
+                "Your Bitcoin has disappeared!",
+                "Money has disappeared from your account!",
+                `The ${items[prankChoice.fridgeItem]} in your fridge has disappeared!`,
+                "Nobody is standing behind you.",
+                "Why are you reading this?",
+                "I knew you'd read this.",
+                "Don't let there be a fourth time.",
+              ];
+          prank.querySelector("#prank-description").textContent =
+            descriptions[prankChoice.kind];
+          prank.querySelector(".prank-amount").textContent =
+            prankChoice.kind === 0
+              ? prankChoice.btc.toFixed(3) + " BTC"
+              : prankChoice.kind === 1
+                ? prankChoice.baht.toLocaleString() + (thai ? " บาท" : " THB")
+                : "";
+        }
+        prank.querySelector(".prank-reveal").textContent = thai
+          ? "ล้อเล่นนะ! สุขสันต์วันคริสต์มาส"
+          : "Just kidding! Merry Christmas!";
+        prank.querySelector(".prank-reveal").hidden = !prankRevealed;
+        prankMore.hidden = !prankRevealed;
+        prankMore.textContent = thai ? "มีอะไรอีก" : "What else?";
+        prankAction.textContent = prankRevealed
+          ? thai
+            ? "ปิด"
+            : "Close"
+          : thai
+            ? "เกิดอะไรขึ้น?"
+            : "What happened?";
+      }
+      prankAction.addEventListener("click", () => {
+        if (prankRevealed) prank.close();
+        else {
+          prankRevealed = true;
+          renderPrank();
+        }
+      });
+      prankMore.addEventListener("click", () => {
+        choosePrank(prankChoice.kind);
+        prankRevealed = false;
+        renderPrank();
+        prankAction.focus();
+      });
+      const languageToggle = document.createElement("button");
+      languageToggle.type = "button";
+      languageToggle.className = "language-toggle";
+      document.body.appendChild(languageToggle);
+      function renderLanguage() {
+        const text = translations[language];
+        renderPrank();
+        document.documentElement.lang = language;
+        document.title = text.title;
+        heading.textContent = text.title;
+        container.querySelector(".eyebrow").textContent = text.eyebrow;
+        container.querySelector(".intro").textContent = text.intro;
+        container.querySelector("#message p").textContent = text.wish;
+        container.querySelector(".signature").textContent = text.signature;
+        container.querySelector(".footer").textContent = text.footer;
+        button.textContent = document.getElementById("message").hidden
+          ? text.open
+          : text.close;
+        languageToggle.textContent =
+          language === "en" ? "ไทย / EN" : "TH / English";
+        languageToggle.setAttribute("aria-label", text.switchLabel);
+      }
+      languageToggle.addEventListener("click", () => {
+        language = language === "en" ? "th" : "en";
+        renderLanguage();
+      });
+      button.addEventListener("click", renderLanguage);
+      renderLanguage();
+      document.addEventListener("click", (event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+          return;
+        const starCount = 1 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < starCount; i++) {
+          const shootingStar = document.createElement("span");
+          shootingStar.className = "shooting-star";
+          shootingStar.setAttribute("aria-hidden", "true");
+          shootingStar.style.right = 5 + Math.random() * 40 + "%";
+          shootingStar.style.animationDelay = i * 0.18 + "s";
+          shootingStar.addEventListener(
+            "animationend",
+            () => shootingStar.remove(),
+            { once: true },
+          );
+          document.body.appendChild(shootingStar);
+        }
+        for (let i = 0; i < 6; i++) {
+          const spark = document.createElement("span");
+          spark.className = "click-spark";
+          spark.setAttribute("aria-hidden", "true");
+          spark.textContent = "✦";
+          spark.style.left = event.clientX + "px";
+          spark.style.top = event.clientY + "px";
+          spark.style.fontSize = 8 + Math.random() * 10 + "px";
+          spark.style.setProperty("--x", Math.random() * 100 - 50 + "px");
+          spark.style.setProperty("--y", 30 + Math.random() * 75 + "px");
+          spark.addEventListener("animationend", () => spark.remove(), {
+            once: true,
+          });
+          document.body.appendChild(spark);
+        }
+      });
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const snow = document.createElement("div");
+        snow.className = "snow";
+        snow.setAttribute("aria-hidden", "true");
+        for (let i = 0; i < 38; i++) {
+          const flake = document.createElement("span");
+          flake.className = "flake";
+          flake.textContent = "✦";
+          flake.style.left = Math.random() * 100 + "%";
+          flake.style.setProperty("--duration", 9 + Math.random() * 14 + "s");
+          flake.style.setProperty("--delay", -Math.random() * 20 + "s");
+          flake.style.setProperty("--size", 5 + Math.random() * 9 + "px");
+          flake.style.setProperty("--drift", -40 + Math.random() * 80 + "px");
+          snow.appendChild(flake);
+        }
+        document.body.appendChild(snow);
+      }
+    </script>
+  </body>
+</html>
